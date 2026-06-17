@@ -1,0 +1,150 @@
+[
+  {
+    "image": "s01_aberta_001_jpeg.rf.HqCHIQrQqpNuUtYTCUZU.jpeg",
+    "ground_truth": [
+      "aberta"
+    ],
+    "predicted": [
+      "fechada"
+    ],
+    "confidences": [
+      0.659
+    ],
+    "correct": false
+  },
+  {
+    "image": "s01_aberta_002_jpeg.rf.ImNHLdMGsc34fBoKgd9Q.jpeg",
+    "ground_truth": [
+      "aberta"
+    ],
+    "predicted": [
+      "aberta"
+    ],
+    "confidences": [
+      0.554
+    ],
+    "correct": true
+  },
+  {
+    "image": "s02_aberta_002_jpeg.rf.HK3pZRzNt0b2Pu7ZuyTk.jpeg",
+    "ground_truth": [
+      "aberta"
+    ],
+    "predicted": [
+      "fechada"
+    ],
+    "confidences": [
+      0.635
+    ],
+    "correct": false
+  },
+  {
+    "image": "s03_aberta_002_jpeg.rf.7xRMLyHD0vMtz4Tejxl7.jpeg",
+    "ground_truth": [],
+    "predicted": [],
+    "confidences": [],
+    "correct": true
+  },
+  {
+    "image": "s04_aberta_004 (1)_jpeg.rf.ItGB5oR38zgS08tiN12m.jpeg",
+    "ground_truth": [
+      "aberta"
+    ],
+    "predicted": [
+      "aberta",
+      "aberta"
+    ],
+    "confidences": [
+      0.641,
+      0.317
+    ],
+    "correct": false
+  },
+  {
+    "image": "s04_fechada_008 (1)_jpeg.rf.En20P60LZLKE02BM9ikJ.jpeg",
+    "ground_truth": [
+      "fechada"
+    ],
+    "predicted": [
+      "fechada"
+    ],
+    "confidences": [
+      0.506
+    ],
+    "correct": true
+  },
+  {
+    "image": "s05_fechada_002 (1)_jpeg.rf.Gq546Rqv21ehMx9dtSq9.jpeg",
+    "ground_truth": [
+      "fechada"
+    ],
+    "predicted": [
+      "fechada",
+      "aberta"
+    ],
+    "confidences": [
+      0.877,
+      0.597
+    ],
+    "correct": false
+  },
+  {
+    "image": "s06_aberta_003 (1)_jpeg.rf.AuS9dODXFOdlojrybSeU.jpeg",
+    "ground_truth": [
+      "aberta"
+    ],
+    "predicted": [
+      "aberta"
+    ],
+    "confidences": [
+      0.918
+    ],
+    "correct": true
+  },
+  {
+    "image": "s06_aberta_004 (1)_jpeg.rf.7FqmNzMHyjL3mS8V4GEx.jpeg",
+    "ground_truth": [
+      "aberta",
+      "aberta"
+    ],
+    "predicted": [
+      "aberta",
+      "aberta"
+    ],
+    "confidences": [
+      0.911,
+      0.263
+    ],
+    "correct": true
+  },
+  {
+    "image": "s08_aberta_001_jpg.rf.FjA1Iaf0FsZ19pzEmIQC.jpg",
+    "ground_truth": [
+      "aberta"
+    ],
+    "predicted": [
+      "aberta",
+      "fechada"
+    ],
+    "confidences": [
+      0.546,
+      0.269
+    ],
+    "correct": false
+  },
+  {
+    "image": "s10_fechada_002_jpg.rf.HZBxp0RJT51rC9HsULxQ.jpg",
+    "ground_truth": [
+      "fechada"
+    ],
+    "predicted": [
+      "aberta",
+      "fechada"
+    ],
+    "confidences": [
+      0.791,
+      0.35
+    ],
+    "correct": false
+  }
+]

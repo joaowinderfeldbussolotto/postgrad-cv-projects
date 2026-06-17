@@ -1,0 +1,62 @@
+[
+  {
+    "name": "baseline_yolov8n_e2",
+    "model": "yolov8n.pt",
+    "epochs": 2,
+    "imgsz": 640,
+    "train_time_s": 32.0,
+    "test_precision": 0.0033788068226610086,
+    "test_recall": 0.9375,
+    "test_map50": 0.3282315668202765,
+    "test_map50_95": 0.22066680381830156,
+    "weights": "/home/user/postgrad-cv-projects/project2/results/runs/baseline_yolov8n_e2/weights/best.pt"
+  },
+  {
+    "name": "yolov8n_e80",
+    "model": "yolov8n.pt",
+    "epochs": 80,
+    "imgsz": 640,
+    "train_time_s": 750.7,
+    "test_precision": 0.6515350196841336,
+    "test_recall": 0.6458333333333333,
+    "test_map50": 0.6871833333333335,
+    "test_map50_95": 0.5325277623303544,
+    "weights": "/home/user/postgrad-cv-projects/project2/results/runs/yolov8n_e80/weights/best.pt"
+  },
+  {
+    "name": "yolov8n_e80_img416",
+    "model": "yolov8n.pt",
+    "epochs": 80,
+    "imgsz": 416,
+    "train_time_s": 134.1,
+    "test_precision": 0.0030003799738773313,
+    "test_recall": 0.9375,
+    "test_map50": 0.45763888888888893,
+    "test_map50_95": 0.3028186507936507,
+    "weights": "/home/user/postgrad-cv-projects/project2/results/runs/yolov8n_e80_img416/weights/best.pt"
+  },
+  {
+    "name": "yolov8s_e80",
+    "model": "yolov8s.pt",
+    "epochs": 80,
+    "imgsz": 640,
+    "train_time_s": 783.5,
+    "test_precision": 0.4612464087197184,
+    "test_recall": 0.6329191588938929,
+    "test_map50": 0.47052829066336727,
+    "test_map50_95": 0.33175275265579823,
+    "weights": "/home/user/postgrad-cv-projects/project2/results/runs/yolov8s_e80/weights/best.pt"
+  },
+  {
+    "name": "yolo11n_e80",
+    "model": "yolo11n.pt",
+    "epochs": 80,
+    "imgsz": 640,
+    "train_time_s": 285.0,
+    "test_precision": 0.003425524569411945,
+    "test_recall": 0.9375,
+    "test_map50": 0.5580529953917052,
+    "test_map50_95": 0.3843939554531491,
+    "weights": "/home/user/postgrad-cv-projects/project2/results/runs/yolo11n_e80/weights/best.pt"
+  }
+]

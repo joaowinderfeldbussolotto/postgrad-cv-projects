@@ -1,0 +1,4 @@
+data/yolo/
+results/runs/
+*.pt
+!results/artifacts/best.pt
