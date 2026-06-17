@@ -46,5 +46,17 @@
     "test_map50": 0.47052829066336727,
     "test_map50_95": 0.33175275265579823,
     "weights": "/home/user/postgrad-cv-projects/project2/results/runs/yolov8s_e80/weights/best.pt"
+  },
+  {
+    "name": "yolo11n_e80",
+    "model": "yolo11n.pt",
+    "epochs": 80,
+    "imgsz": 640,
+    "train_time_s": 285.0,
+    "test_precision": 0.003425524569411945,
+    "test_recall": 0.9375,
+    "test_map50": 0.5580529953917052,
+    "test_map50_95": 0.3843939554531491,
+    "weights": "/home/user/postgrad-cv-projects/project2/results/runs/yolo11n_e80/weights/best.pt"
   }
 ]
