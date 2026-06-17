@@ -54,8 +54,16 @@ o **Google Colab** (`Ambiente de execução → Executar tudo`, com **GPU T4**).
 5. Treina um **baseline** de 2 épocas (referência do enunciado);
 6. Treina com **validação cruzada 5-fold** (resultado principal, group-aware)
    e reporta **mAP@50 / mAP@50-95 / P / R médios ± desvio** — métrica confiável;
-7. **Diagnóstico** por matriz de confusão (erro de *localização* vs *estado*);
-8. Roda **inferência** na validação e em **imagens novas** (upload no Colab).
+7. **Prova** (verificação independente) que nenhuma imagem idêntica está em
+   treino e validação ao mesmo tempo, no baseline e em todos os folds;
+8. **Diagnóstico** por matriz de confusão (erro de *localização* vs *estado*);
+9. Roda **inferência** na validação e em **imagens novas** (upload no Colab).
+
+> ⚠️ **Sobre a variância entre folds:** mesmo com a prova de que nenhuma imagem
+> idêntica vaza, os folds variam (~0.4 a ~0.9 de mAP50) porque há **poucas cenas
+> independentes** (10 integrantes; s04/s05/s06 = 62%) — fotos diferentes da mesma
+> torneira deixam o modelo memorizar a cena. Leia a métrica pela **média ±
+> desvio**; o caminho para subir/estabilizar é **mais torneiras independentes**.
 
 ### Decisões para maximizar o resultado
 
