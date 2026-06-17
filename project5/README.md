@@ -40,28 +40,38 @@ dataset/
 ## Notebook
 
 [`torneiras_estados_yolo.ipynb`](./torneiras_estados_yolo.ipynb) — pronto para
-o **Google Colab** (`Ambiente de execução → Executar tudo`). Ele:
+o **Google Colab** (`Ambiente de execução → Executar tudo`, com **GPU T4**). Ele:
 
 1. Instala o Ultralytics (YOLO11) e checa GPU;
 2. Baixa o dataset direto do GitHub (ou usa a pasta local);
 3. Explora a distribuição de classes e visualiza as anotações;
-4. Faz um **split estratificado** treino/validação (80/20, reprodutível);
-5. Treina um **baseline** de 2 épocas (referência do enunciado);
-6. Treina o **modelo completo** com transfer learning + data augmentation +
-   early-stopping para o melhor resultado possível;
-7. Reporta **métricas** (P, R, mAP@50, mAP@50-95), matriz de confusão e curvas;
+4. Treina um **baseline** de 2 épocas (referência do enunciado);
+5. Treina com **validação cruzada 5-fold** (resultado principal) e reporta
+   **mAP@50 / mAP@50-95 médios ± desvio** — métrica confiável;
+6. **Diagnóstico** por matriz de confusão (erro de *localização* vs *estado*);
+7. **Compara `yolo11n/s/m`** para mostrar que modelos maiores não compensam;
 8. Roda **inferência** na validação e em **imagens novas** (upload no Colab).
 
 ### Decisões para maximizar o resultado
 
-- **Modelo:** `yolo11s.pt` (transfer learning a partir do COCO).
-- **Augmentation forte:** HSV, rotação, escala, translação, flip horizontal,
-  *mosaic* + *mixup* — compensa o tamanho pequeno do dataset.
-- **`cos_lr` + `patience`:** decaimento cosseno do learning rate e
-  early-stopping para parar no melhor ponto sem overfitting.
-- **Split estratificado por classe** e reprodutível (`SEED=42`).
+- **Modelo:** `yolo11s.pt` (transfer learning a partir do COCO). Modelos XL
+  **não** são usados: em 85 imagens overfitam e não generalizam melhor.
+- **Augmentation calibrada para o problema:** HSV/flip/rotação/translação **leves**,
+  com **`mosaic=0` e `mixup=0` desligados** — eles encolhem a torneira e misturam
+  aberta+fechada, destruindo a pista de estado (ótimos para COCO, ruins aqui).
+- **`imgsz=768`** para preservar o detalhe do registro/alavanca.
+- **`cos_lr` + `patience`:** decaimento cosseno do LR e early-stopping.
+- **Validação cruzada 5-fold** estratificada e reprodutível (`SEED=42`): evita a
+  métrica ruidosa de um único split de 17 imagens.
 
 > **Caveat de honestidade científica:** como há várias fotos por integrante, um
 > *group split* (separar integrantes entre treino e validação) daria métricas
 > mais conservadoras/generalizáveis. Optou-se pelo split estratificado por
 > classe (padrão deste desafio); o caveat fica registrado no notebook.
+
+### Histórico
+
+- **v1:** treino único com augmentation forte → `mAP50 ≈ 0.38` (melhor época = 4),
+  sinal de augmentation agressiva demais para o problema.
+- **v2 (atual):** augmentation calibrada + 5-fold CV + `imgsz=768` + diagnóstico +
+  comparação de modelos, para um resultado mais alto e **confiável**.
