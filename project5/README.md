@@ -41,10 +41,25 @@ dataset/
 └── notes.json     # metadados do export do Label Studio
 ```
 
-## Notebook
+## Notebooks
 
-[`torneiras_estados_yolo.ipynb`](./torneiras_estados_yolo.ipynb) — pronto para
-o **Google Colab** (`Ambiente de execução → Executar tudo`, com **GPU T4**). Ele:
+Há **dois notebooks**, ambos prontos para o **Google Colab**
+(`Ambiente de execução → Executar tudo`, com **GPU T4**). A diferença entre eles
+é só **como o split treino/validação é agrupado**:
+
+| Notebook | Agrupamento do split | Métrica |
+|----------|----------------------|---------|
+| [`torneiras_estados_yolo.ipynb`](./torneiras_estados_yolo.ipynb) | por **hash de imagem** (duplicatas exatas nunca cruzam) | mais alta, mas fotos diferentes da mesma torneira podem aparecer dos dois lados |
+| [`torneiras_estados_yolo_split_integrante.ipynb`](./torneiras_estados_yolo_split_integrante.ipynb) | por **integrante** (`sNN` — cada pessoa/torneira 100% de um lado) | mais baixa/variável, porém mede generalização real para uma torneira **nunca vista** |
+
+Os dois clonam o dataset direto da branch `claude/wonderful-fermi-mwei17` do
+GitHub (onde o `project5/dataset` existe — ainda não está no `main`) e, na
+inferência, usam `agnostic_nms=True, max_det=1`: como uma torneira não pode
+estar aberta **e** fechada ao mesmo tempo, em caso de duas detecções
+conflitantes o modelo mantém só a de **maior confiança**.
+
+[`torneiras_estados_yolo.ipynb`](./torneiras_estados_yolo.ipynb) — notebook
+principal (split por hash). Ele:
 
 1. Instala o Ultralytics (YOLO11) e checa GPU;
 2. Baixa o dataset direto do GitHub (ou usa a pasta local);
@@ -64,6 +79,15 @@ o **Google Colab** (`Ambiente de execução → Executar tudo`, com **GPU T4**).
 > independentes** (10 integrantes; s04/s05/s06 = 62%) — fotos diferentes da mesma
 > torneira deixam o modelo memorizar a cena. Leia a métrica pela **média ±
 > desvio**; o caminho para subir/estabilizar é **mais torneiras independentes**.
+> O notebook [`_split_integrante`](./torneiras_estados_yolo_split_integrante.ipynb)
+> resolve isso na raiz, agrupando por integrante.
+
+[`torneiras_estados_yolo_split_integrante.ipynb`](./torneiras_estados_yolo_split_integrante.ipynb)
+— mesmo pipeline, mas o split (baseline + CV) agrupa por **integrante** (`sNN`),
+não por hash: cada pessoa/torneira fica 100% de um lado, então cada fold valida
+numa torneira **nunca vista** durante o treino. A prova da Seção 9 verifica essa
+garantia em dobro (integrante **e** hash). Resultado: métrica mais
+baixa/variável, mas mais honesta sobre generalização real.
 
 ### Decisões para maximizar o resultado
 
@@ -79,8 +103,8 @@ o **Google Colab** (`Ambiente de execução → Executar tudo`, com **GPU T4**).
   evita a métrica ruidosa de um único split pequeno **e** evita que imagens
   duplicadas vazem entre treino e validação.
 
-> **Caveat de honestidade científica:** como há várias fotos por integrante, um
-> *group split* por integrante (separar pessoas inteiras entre treino e
-> validação) daria métricas ainda mais conservadoras/generalizáveis. Optou-se
-> pelo split estratificado por classe + grupo de duplicatas (padrão deste
-> desafio, com a correção de leak); o caveat fica registrado no notebook.
+> **Caveat de honestidade científica:** este notebook usa split por hash (padrão
+> deste desafio, com a correção de leak). O notebook
+> [`_split_integrante`](./torneiras_estados_yolo_split_integrante.ipynb) implementa
+> o *group split* por integrante sugerido aqui, com métricas mais
+> conservadoras/generalizáveis.
