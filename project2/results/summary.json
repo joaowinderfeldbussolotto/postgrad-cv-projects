@@ -1,0 +1,14 @@
+[
+  {
+    "name": "baseline_yolov8n_e2",
+    "model": "yolov8n.pt",
+    "epochs": 2,
+    "imgsz": 640,
+    "train_time_s": 32.0,
+    "test_precision": 0.0033788068226610086,
+    "test_recall": 0.9375,
+    "test_map50": 0.3282315668202765,
+    "test_map50_95": 0.22066680381830156,
+    "weights": "/home/user/postgrad-cv-projects/project2/results/runs/baseline_yolov8n_e2/weights/best.pt"
+  }
+]
