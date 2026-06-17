@@ -1,0 +1,7 @@
+# Saídas de treino do YOLO / Ultralytics
+runs_torneiras/
+torneiras_yolo/
+postgrad-cv-projects/
+novas_imagens/
+*.pt
+yolo11*.pt
