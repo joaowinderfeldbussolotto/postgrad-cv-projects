@@ -47,10 +47,11 @@ Há **dois notebooks**, ambos prontos para o **Google Colab**
 (`Ambiente de execução → Executar tudo`, com **GPU T4**). A diferença entre eles
 é só **como o split treino/validação é agrupado**:
 
-| Notebook | Agrupamento do split | Métrica |
-|----------|----------------------|---------|
-| [`torneiras_estados_yolo.ipynb`](./torneiras_estados_yolo.ipynb) | por **hash de imagem** (duplicatas exatas nunca cruzam) | mais alta, mas fotos diferentes da mesma torneira podem aparecer dos dois lados |
-| [`torneiras_estados_yolo_split_integrante.ipynb`](./torneiras_estados_yolo_split_integrante.ipynb) | por **integrante** (`sNN` — cada pessoa/torneira 100% de um lado) | mais baixa/variável, porém mede generalização real para uma torneira **nunca vista** |
+| Notebook | Avaliação | Métrica |
+|----------|-----------|---------|
+| [`torneiras_estados_yolo_simples.ipynb`](./torneiras_estados_yolo_simples.ipynb) | **1 split** train/test sobre o set **deduplicado** (sem CV) | ponto de partida mais simples; inclui seção explicando por que o KFold foi enganoso |
+| [`torneiras_estados_yolo.ipynb`](./torneiras_estados_yolo.ipynb) | 5-fold agrupado por **hash de imagem** (duplicatas exatas nunca cruzam) | mais alta, mas fotos diferentes da mesma torneira podem aparecer dos dois lados |
+| [`torneiras_estados_yolo_split_integrante.ipynb`](./torneiras_estados_yolo_split_integrante.ipynb) | 5-fold agrupado por **integrante** (`sNN` — cada pessoa/torneira 100% de um lado) | mais baixa/variável, porém mede generalização real para uma torneira **nunca vista** |
 
 Os dois clonam o dataset direto da branch `claude/wonderful-fermi-mwei17` do
 GitHub (onde o `project5/dataset` existe — ainda não está no `main`) e, na
