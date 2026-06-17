@@ -1,0 +1,2 @@
+torneira_aberta
+torneira_fechada
